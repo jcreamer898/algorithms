@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { LinkedList } from './';
+import { LinkedList } from '.';
 
 const list = new LinkedList<string>();
 
@@ -25,3 +25,7 @@ const nope = list.search('not in the list');
 
 assert.equal(node.value, 'hello again');
 assert.equal(nope, null);
+
+const deleted = list.deleteHead();
+
+assert.equal(deleted.value, 'put this at the beginning');

@@ -54,5 +54,22 @@ export class LinkedList<T> {
 
         return null;
     }
+
+    deleteHead() {
+        if (!this.head) {
+            return null;
+        }
+
+        const current = this.head;
+
+        if (this.head.next) {
+            this.head = this.head.next;
+        } else {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return current;
+    }
     traverse() {}
 }
