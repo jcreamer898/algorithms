@@ -78,7 +78,7 @@ export class DoublyLinkedList<T> {
             current = current.next;
         }
 
-        return this;
+        return deleted;
     }
 
     find(comparatorFn: (node: DoublyLinkedListNode<T>) => boolean) {
@@ -94,5 +94,26 @@ export class DoublyLinkedList<T> {
 
             current = current.next;
         }
+    }
+
+    deleteTail() {
+        if (!this.tail) {
+            return null;
+        }
+
+        if (this.tail === this.head) {
+            const deleted = this.tail;
+
+            this.tail = null;
+            this.head = null;
+
+            return deleted;
+        }
+
+        const deleted = this.tail;
+        this.tail = this.tail.previous;
+        this.tail.next = null;
+
+        return deleted;
     }
 }
