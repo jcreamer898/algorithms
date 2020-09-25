@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { LRU } from './lru';
 
-const cache = new LRU<string>();
+const cache = new LRU<string>(5);
 
 cache.set({ key: 'foo', value: 'bar' });
 cache.set({ key: 'bar', value: 'foo' });
@@ -22,3 +22,9 @@ assert.equal(cache.items.head.value.key, 'foo');
 cache.set({ key: 'abc123', value: 'my value' });
 assert.equal(cache.items.head.value.key, 'abc123');
 assert.equal(cache.size, 5);
+
+cache.set({ key: 'abc456', value: 'my last value' });
+assert.equal(cache.size, 5);
+assert.equal(cache.items.head.value.key, 'abc456');
+assert.equal(cache.cache.has('bar'), false);
+assert.equal(cache.cache.get('abc456').value.value, 'my last value')

@@ -12,13 +12,16 @@ export class LRU<ValueType> {
     items: DoublyLinkedList<CacheItem<ValueType>>;
     cache: Map<string, DoublyLinkedListNode<CacheItem<ValueType>>> = new Map();
 
-    constructor() {
+    constructor(limit) {
         this.items = new DoublyLinkedList<CacheItem<ValueType>>();
+        this.limit = limit;
     }
 
     set(item: CacheItem<ValueType>) {
-        if (this.items.count > this.limit) {
-            this.items.deleteTail();
+        if (this.items.count + 1 > this.limit) {
+            const tail = this.items.deleteTail();
+            this.size -= 1;
+            this.cache.delete(tail.value.key)
         }
 
         this.items.prepend(item);
