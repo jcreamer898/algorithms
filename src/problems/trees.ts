@@ -34,7 +34,7 @@ export function isBalanced(node) {
     };
 
   findDepth(cache, node, 0);
-  console.log(cache.max, cache.min)
+
   return cache.max - cache.min <= 1;
 }
 
