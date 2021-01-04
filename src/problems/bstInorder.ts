@@ -2,17 +2,28 @@
 
 /**
  * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
+  class TreeNode {
+      val: number
+      left: TreeNode | null
+      right: TreeNode | null
+      constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+          this.val = (val===undefined ? 0 : val)
+          this.left = (left===undefined ? null : left)
+          this.right = (right===undefined ? null : right)
+      }
+  }
  */
+
+class TreeNode {
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val===undefined ? 0 : val)
+        this.left = (left===undefined ? null : left)
+        this.right = (right===undefined ? null : right)
+    }
+}
 
 /*
      5
@@ -20,6 +31,15 @@
 1  4  6   9  
 
 */
+
+function inorderTraversal(root: TreeNode | null): number[] {
+    const vals = [];
+    
+    traverse(root, vals);
+    
+    return vals;
+};
+
 
 const traverse = (root, vals) => {
     if (!root) return;
@@ -33,12 +53,4 @@ const traverse = (root, vals) => {
     if (root.right) {
         traverse(root.right, vals);
     }
-};
-
-function inorderTraversal(root: TreeNode | null): number[] {
-    const vals = [];
-    
-    traverse(root, vals);
-    
-    return vals;
 };

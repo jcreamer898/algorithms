@@ -23,7 +23,7 @@ start === end = 3
 /**
 * Retruns index of target or -1
 */
-var binarySearch = (nums, target, direction) => {    
+const binarySearch = (nums, target, direction) => {    
     let start = 0; 
     let end = nums.length - 1;
     let result = -1;
@@ -51,7 +51,7 @@ var binarySearch = (nums, target, direction) => {
 
 const notFound = [-1, -1];
 
-var searchRange = function(nums, target) {
+const searchRange = function(nums, target) {
     if (!nums.length) return notFound;
 
     const indexLeft = binarySearch(nums, target, "left");
