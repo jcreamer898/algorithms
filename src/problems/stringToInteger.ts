@@ -1,9 +1,9 @@
 // https://leetcode.com/problems/string-to-integer-atoi/solution/
 
 function isValidSymbol(char) {
-    const validSymbols = ["+", "-", ' '];
-    
-    return validSymbols.indexOf(char) > -1
+    const validSymbols = ['+', '-', ' '];
+
+    return validSymbols.indexOf(char) > -1;
 }
 
 function isValidNumber(char) {
@@ -11,19 +11,16 @@ function isValidNumber(char) {
 }
 
 const intMax = Math.pow(2, 31) - 1;
-const intMin = -(Math.pow(2, 31));
+const intMin = -Math.pow(2, 31);
 
 function myAtoi(str) {
     const trimmed = str.trim();
-    const [firstCharacter, ...rest] = trimmed;
-    
-    let valid = true;
-    const chars = trimmed.split("");
-    
+    const chars = trimmed.split('');
+
     if (!chars.length) {
         return 0;
     }
-    
+
     const convertedChars = [];
     for (let i = 0, len = chars.length; i < len; i += 1) {
         const char = chars[i];
@@ -35,18 +32,18 @@ function myAtoi(str) {
             break;
         }
     }
-    
+
     if (isValidSymbol(convertedChars[0]) && !isValidNumber(convertedChars[1])) {
         return 0;
     }
-    
-    const parsed = parseInt(convertedChars.join(""), 10);
-    
+
+    const parsed = parseInt(convertedChars.join(''), 10);
+
     if (parsed > intMax) {
         return intMax;
     } else if (parsed < intMin) {
-        return intMin
+        return intMin;
     }
-    
+
     return parsed;
-};
+}
