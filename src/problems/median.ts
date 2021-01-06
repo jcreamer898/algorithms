@@ -24,7 +24,7 @@ const median = (array1, array2) => {
         return (maxFirst + minSecond) / 2;
     }
 
-    const isEven = array1 % 2 === 0;
+    const isEven = array1.length % 2 === 0;
 
     const median1 = isEven
         ? array1[array1.length / 2 + 1] + array1[array1.length / 2] / 2

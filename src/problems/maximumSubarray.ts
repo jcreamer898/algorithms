@@ -6,6 +6,19 @@
 
 */
 
+// function maxSubArray(nums: number[]): number {
+//     let maximum = nums[0];
+//     let size = nums.length;
+//     let sum = nums[0];
+    
+//     for (let i = 1; i < size; i++) {
+//         sum = Math.max(nums[i], nums[i] + sum);
+//         maximum = Math.max(sum, maximum);
+//     }
+    
+//     return maximum;
+// }
+
 function maxSubArray(initial: number[]): number {
     const findMax = (nums) => {
       if (nums.length === 1) {

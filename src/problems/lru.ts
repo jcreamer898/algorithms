@@ -19,9 +19,7 @@ export class LRU<ValueType> {
 
     set(item: CacheItem<ValueType>) {
         if (this.items.count + 1 > this.limit) {
-            const tail = this.items.deleteTail();
-            this.size -= 1;
-            this.cache.delete(tail.value.key)
+           this.evict()
         }
 
         this.items.prepend(item);
@@ -44,5 +42,11 @@ export class LRU<ValueType> {
         this.items.delete((node) => node.value.key === key);
         this.cache.delete(key);
         this.size -= 1;
+    }
+
+    evict() {
+        const tail = this.items.deleteTail();
+        this.size -= 1;
+        this.cache.delete(tail.value.key)
     }
 }
